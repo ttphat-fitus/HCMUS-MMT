@@ -1,13 +1,21 @@
-# modules/process_manager.py
-import psutil, subprocess, os
+#modules/process_manager.py
+import subprocess
+import psutil
 
 def list_processes():
-    return [p.name() for p in psutil.process_iter()]
+    return [(p.pid, p.name()) for p in psutil.process_iter()]
 
-def start_app(command):
-    subprocess.Popen(command, shell=True)
+def start_app(app_command):
+    try:
+        subprocess.Popen(app_command, shell=True)
+        return f"Opened: {app_command}"
+    except Exception as e:
+        return f"Unable to open: {e}"
 
-def stop_app_by_name(name):
-    for p in psutil.process_iter():
-        if p.name() == name:
-            p.terminate()
+def stop_process_by_name(name):
+    stopped = 0
+    for proc in psutil.process_iter(['name']):
+        if proc.info['name'] == name:
+            proc.kill()
+            stopped += 1
+    return f"Terminated {stopped} process {name}"

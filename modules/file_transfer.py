@@ -1,6 +1,13 @@
 # modules/file_transfer.py
-import shutil, os
+import shutil
+import os
 
-def copy_file(src_path, dst_dir='files'):
+def copy_file(src, dst_dir='files'):
     os.makedirs(dst_dir, exist_ok=True)
-    shutil.copy(src_path, dst_dir)
+    try:
+        filename = os.path.basename(src)
+        dst_path = os.path.join(dst_dir, filename)
+        shutil.copy(src, dst_path)
+        return f"File copied: {src} → {dst_path}"
+    except Exception as e:
+        return f"Unable to copy: {e}"
