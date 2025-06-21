@@ -67,7 +67,7 @@ python main.py
 
 ---
 
-## 🎥 Demo (Optional)
+## 🎥 Demo
 ![Demo](images/demo.png)
 
 ---
