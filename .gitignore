@@ -1,0 +1,45 @@
+cat <<EOF > .gitignore
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Logs
+*.log
+logs/
+*.sqlite3
+
+# Virtual environments
+venv/
+env/
+ENV/
+
+# VS Code
+.vscode/
+
+# Python environment files
+*.env
+.env
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Jupyter Notebook checkpoints
+.ipynb_checkpoints
+
+# Google credentials and tokens
+token.json
+credentials.json
+
+# Videos or large files
+videos/
+*.mp4
+*.avi
+*.mov
+
+# Output / temporary files
+*.tmp
+*.bak
+*.swp
+EOF
